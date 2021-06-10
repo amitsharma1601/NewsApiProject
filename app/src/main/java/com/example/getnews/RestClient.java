@@ -23,7 +23,7 @@ public class RestClient {
 
     public NewsApi getNewsApiService(){
         retrofit = new Retrofit.Builder()
-                .baseUrl("https://newsapi.org")
+                .baseUrl("https://saurav.tech/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

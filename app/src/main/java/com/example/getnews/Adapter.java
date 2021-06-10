@@ -1,6 +1,7 @@
 package com.example.getnews;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -20,12 +21,18 @@ import com.squareup.picasso.Target;
 import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.RecyclerViewHolder> {
+    public Adapter(Context context) {
+        this.context = context;
+    }
+
+    private Context context;
     private ArrayList<Article> recyclerModelsDataArrayList;
     private static final int MAX_BITMAP_SIZE = 100 * 1024 * 1024;
 
 
 
-    public Adapter(ArrayList<Article> recyclerModelsDataArrayList) {
+    public Adapter(Context context,ArrayList<Article> recyclerModelsDataArrayList) {
+        this.context=context;
         this.recyclerModelsDataArrayList = recyclerModelsDataArrayList;
     }
 
@@ -51,6 +58,21 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecyclerViewHolder> {
             ex.printStackTrace();
         }
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //inside on click listner method we are calling a new activity and passing all the data of that item in next intent.
+                Intent i = new Intent(context, NewsDetails.class);
+                i.putExtra("author", modal.author);
+                i.putExtra("title", modal.title);
+                i.putExtra("content", modal.content);
+                i.putExtra("thumbnail", modal.urlToImage);
+
+                //after passing that data we are starting our new  intent.
+                context.startActivity(i);
+            }
+        });
+
     }
 
     @Override
@@ -59,12 +81,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecyclerViewHolder> {
     }
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        private TextView t1,t2,t3,t4;
+        private TextView t2,t3,t4;
         private ImageView id1;
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
-            t1= itemView.findViewById(R.id.t1);
+
             t2= itemView.findViewById(R.id.t2);
             t3= itemView.findViewById(R.id.t3);
             t4= itemView.findViewById(R.id.t4);
