@@ -12,13 +12,15 @@ class Article{
     public String title;
     public String urlToImage;
     public String thumbnail;
+    public String urlToArticle;
 
-    public Article(String author, String content, String title, String urlToImage,String thumbnail) {
+    public Article(String author, String content, String title, String urlToImage,String thumbnail, String urlToArticle) {
         this.author = author;
         this.content = content;
         this.title = title;
         this.urlToImage = urlToImage;
         this.thumbnail = thumbnail;
+        this.urlToArticle = urlToArticle;
     }
 
     public String getAuthor() {
@@ -59,5 +61,13 @@ class Article{
 
     public void setThumbnailr(String author) {
         this.author = author;
+    }
+
+    public String getUrlToArticle() {
+        return urlToArticle;
+    }
+
+    public void setUrlToArticle(String urlToArticle) {
+        this.urlToArticle = urlToArticle;
     }
 }

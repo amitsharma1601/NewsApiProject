@@ -51,7 +51,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecyclerViewHolder> {
         Article modal =  recyclerModelsDataArrayList.get(position);
         holder.t2.setText(modal.author);
         holder.t3.setText(modal.title);
-        holder.t4.setText(modal.content);
         try {
             Picasso.get().load(modal.urlToImage).fit().into(holder.id1);
         }catch (Exception ex){
@@ -67,6 +66,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecyclerViewHolder> {
                 i.putExtra("title", modal.title);
                 i.putExtra("content", modal.content);
                 i.putExtra("thumbnail", modal.urlToImage);
+                i.putExtra("url", modal.urlToArticle);
 
                 //after passing that data we are starting our new  intent.
                 context.startActivity(i);
@@ -81,7 +81,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecyclerViewHolder> {
     }
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        private TextView t2,t3,t4;
+        private TextView t2,t3;
         private ImageView id1;
 
         public RecyclerViewHolder(@NonNull View itemView) {
@@ -89,7 +89,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecyclerViewHolder> {
 
             t2= itemView.findViewById(R.id.t2);
             t3= itemView.findViewById(R.id.t3);
-            t4= itemView.findViewById(R.id.t4);
             id1= itemView.findViewById(R.id.id1);
         }
     }

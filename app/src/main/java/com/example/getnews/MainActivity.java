@@ -38,25 +38,30 @@ FrameLayout frameLayout;
     private void initialization(){
         tabLayout=findViewById(R.id.frame_tab_layout);
         frameLayout=findViewById(R.id.frame_tab_layout);
-        addFragment(new cnnFragment());
+        addFragment(new Business(0));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()){
                     case 0:
-                        addFragment(new cnnFragment());
+                        //CNN
+                        addFragment(new Business(0));
                         break;
                     case 1:
-                        addFragment(new BBCFragment());
+                        //Health
+                        addFragment(new Business(1));
                         break;
                     case 2:
-                        addFragment(new SportsFragment());
+                        //Sports
+                        addFragment(new Business(2));
                         break;
                     case 3:
-                        addFragment(new Business());
+                        //Business
+                        addFragment(new Business(3));
                         break;
                     case 4:
-                        addFragment(new Entertainment());
+                        //Entertainment
+                        addFragment(new Business(4) );
                         break;
                 }
             }
